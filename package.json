@@ -1,0 +1,23 @@
+{
+  "name": "chat",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/alexiszuck/chat.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/alexiszuck/chat/issues"
+  },
+  "homepage": "https://github.com/alexiszuck/chat#readme",
+  "devDependencies": {
+    "parcel-bundler": "^1.10.3"
+  }
+}
