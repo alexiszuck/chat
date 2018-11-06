@@ -1,0 +1,23 @@
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>alexis's pusher's chatkit</title>
+  </head>
+  <body>
+    test chatkit
+    <script src="https://unpkg.com/@pusher/chatkit/dist/web/chatkit.js"></script>
+    <script>var tokenProvider = new Chatkit.TokenProvider({
+  url: "https://us1.pusherplatform.io/services/chatkit_token_provider/v1/ac1e60dc-3833-4ebf-bd2d-e31aa1aa68ee/token"
+});
+var chatManager = new Chatkit.ChatManager({
+  instanceLocator: "v1:us1:ac1e60dc-3833-4ebf-bd2d-e31aa1aa68ee",
+  userId: "alexis",
+  tokenProvider: tokenProvider
+});
+chatManager.connect().then(function (currentUser) {
+  console.log("Connected as user ", currentUser);
+}).catch(function (error) {
+  console.error("error:", error);
+});</script>
+  </body>
+</html>
