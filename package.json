@@ -4,8 +4,11 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "prebuild-x": "rm -rf docs && mkdir docs && cp ./src/favicon.ico ./docs/favicon.ico",
     "build": "NODE_ENV=production parcel build --no-content-hash --out-dir docs src/index.html",
-    "serve": "NODE_ENV=development parcel src/index.html --port $PORT --log-level 3 --hmr-port 8081"
+    "serve-x": "NODE_ENV=development parcel src/index.html --port $PORT --log-level 3 --hmr-port 8081",
+    "serve-prod": "NODE_ENV=production parcel src/index.html --port 8082 --log-level 3 --hmr-port 8081",
+    "serve": "NODE_ENV=development parcel src/index.html --port 8082 --log-level 3 --hmr-port 8081"
   },
   "repository": {
     "type": "git",
@@ -19,6 +22,7 @@
   },
   "homepage": "https://github.com/alexiszuck/chat#readme",
   "devDependencies": {
+    "@pusher/chatkit-client": "^1.0.4",
     "parcel-bundler": "^1.10.3"
   }
 }
