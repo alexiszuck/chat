@@ -4,7 +4,12 @@
     <title>alexis's pusher's chatkit</title>
   </head>
   <body>
-    test chatkit
+    <ul id="message-list"></ul>
+    <form id="message-form">
+      <input type='text' id='message-text'>
+      <input type="submit">
+    </form>
+
     <script src="https://unpkg.com/@pusher/chatkit/dist/web/chatkit.js"></script>
     <script>
 const tokenProvider = new Chatkit.TokenProvider({
@@ -17,15 +22,38 @@ const chatManager = new Chatkit.ChatManager({
   tokenProvider: tokenProvider
 });
 
-chatManager
-  .connect()
-  .then(currentUser => {
-    console.log("Connected as user ", currentUser);
-  })
-  .catch(error => {
-    console.error("error:", error);
-  });
-  
+
+      chatManager
+        .connect()
+        .then(currentUser => {
+          currentUser.subscribeToRoom({
+            roomId: currentUser.rooms[0].id,
+            hooks: {
+              onMessage: message => {
+                const ul = document.getElementById("message-list");
+                const li = document.createElement("li");
+                li.appendChild(
+                  document.createTextNode(`${message.senderId}: ${message.text}`)
+                );
+                ul.appendChild(li);
+              }
+            }
+          });
+
+          const form = document.getElementById("message-form");
+          form.addEventListener("submit", e => {
+            e.preventDefault();
+            const input = document.getElementById("message-text");
+            currentUser.sendMessage({
+              text: input.value,
+              roomId: currentUser.rooms[0].id
+            });
+            input.value = "";
+          });
+        })
+        .catch(error => {
+          console.error("error:", error);
+        });
     </script>
   </body>
 </html>
