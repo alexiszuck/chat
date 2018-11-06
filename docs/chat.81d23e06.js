@@ -5,4 +5,4 @@ var e,t=arguments[3];!function(t,n){"object"==typeof exports&&"undefined"!=typeo
 },{}],"+TuV":[function(require,module,exports) {
 "use strict";var e=require("@pusher/chatkit-client");!function(){var t=new e.TokenProvider({url:"https://alexiszuck-chat-token.herokuapp.com/token"});new e.ChatManager({instanceLocator:"v1:us1:ac1e60dc-3833-4ebf-bd2d-e31aa1aa68ee",userId:"alexis",tokenProvider:t}).connect().then(function(e){console.log("connected",e),e.subscribeToRoom({roomId:e.rooms[0].id,hooks:{onMessage:function(e){var t=document.getElementById("message-list"),o=document.createElement("li");o.appendChild(document.createTextNode("".concat(e.senderId,": ").concat(e.text))),t.appendChild(o)}}}),document.getElementById("message-form").addEventListener("submit",function(t){t.preventDefault();var o=document.getElementById("message-text");e.sendMessage({text:o.value,roomId:e.rooms[0].id}),o.value=""})}).catch(function(e){console.error("error:",e)})}();
 },{"@pusher/chatkit-client":"Ujn/"}]},{},["+TuV"], null)
-//# sourceMappingURL=/chat.81d23e06.map
+//# sourceMappingURL=/chat/chat.81d23e06.map

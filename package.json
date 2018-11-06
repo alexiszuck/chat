@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "prebuild-x": "rm -rf docs && mkdir docs && cp ./src/favicon.ico ./docs/favicon.ico",
-    "build": "NODE_ENV=production parcel build --no-content-hash --out-dir docs src/index.html",
+    "build": "NODE_ENV=production parcel build --no-content-hash --out-dir docs --public-url /chat src/index.html",
     "serve-x": "NODE_ENV=development parcel src/index.html --out-dir docs --port $PORT --log-level 3 --hmr-port 8081",
     "serve-prod": "NODE_ENV=production parcel src/index.html --out-dir docs --port 8082 --log-level 3 --hmr-port 8081",
     "serve": "NODE_ENV=development parcel src/index.html --out-dir docs --port 8082 --log-level 3 --hmr-port 8081"
